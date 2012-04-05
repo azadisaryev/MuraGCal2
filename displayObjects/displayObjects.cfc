@@ -1,5 +1,5 @@
-﻿<cfcomponent extends="mura.plugin.pluginGenericEventHandler" output="no"><cfscript>
-public any function dspMuraGCalObject($){
+﻿<cfcomponent extends="mura.plugin.pluginGenericEventHandler" output="false"><cfscript>
+public any function dspMuraGCalObject(required struct $){
 	
 	var oParams = $.event('objectParams');
 	var str = "";

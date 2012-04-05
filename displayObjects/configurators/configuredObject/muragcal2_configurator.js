@@ -37,7 +37,7 @@ function initMuraGCalConfigurator(data) {
 				// 'Add Another Calendar' button click event handling
 				jQuery("#mgc2BtnAddCalendar").click(function(){
 					var $this = jQuery(this), ok2add = true;
-					if (muraGCal2Counter>=1) ok2add = confirm("Are you sure you want to add another calendar?\n\nToo many calendars aggregated into one may become difficult to read."); // sanity check
+					if (muraGCal2Counter>=3) ok2add = confirm("Are you sure you want to add another calendar?\n\nToo many calendars aggregated into one may become difficult to read."); // sanity check
 					if (ok2add) {
 						muraGCal2Counter++;
 						jQuery('<dl class="singleColumn mgc2_calendar"><dt>Calendar '+muraGCal2Counter+'<span class="removeGCalID"></span></dt><dd><legend>Google Calendar ID: <input name="GCalID" class="objectParam" value="" style="width:250px;"></legend></dd><dd class="colorpicker"><legend>Calendar Events Color: <input name="GCalColor" class="objectParam muragcal2-color-picker" value="" size="7"></legend></dd></dl>')
