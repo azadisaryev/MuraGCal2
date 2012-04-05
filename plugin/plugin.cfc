@@ -1,8 +1,8 @@
 <cfcomponent output="false" extends="mura.plugin.plugincfc" hint="MuraGCal2 Plugin cfc"><cfscript>
 variables.pluginConfig = "";
-variables.author = "Azadi Saryev | azadi.saryev@gmail.com | https://azadisaryev@github.com/azadisaryev/MuraGCal2.git";
-variables.pluginVersion = "2.0.20120402";
-variables.dateCreated = createDateTime(2012,04,02,0,0,0);
+variables.author = "Azadi Saryev | azadi.saryev@gmail.com | https://github.com/azadisaryev/MuraGCal2";
+variables.dateCreated = createDateTime(2012,04,05,0,0,0);
+variables.pluginVersion = "2.0." & dateformat(variables.dateCreated, 'yyyymmdd');
 variables.packageName = "MuraGCal2";
 
 public any function init(pluginConfig="") {

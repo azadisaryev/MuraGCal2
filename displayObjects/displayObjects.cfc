@@ -12,7 +12,8 @@ public any function dspMuraGCalObject($){
 		if ( arraylen(arrColors) lt i ) arrayappend(arrColors, arrColors[1]);
 		strCalsColors = strCalsColors & '&amp;src=' & urlencodedformat(arrSources[i]) & '&amp;color=' & urlencodedformat(arrColors[i]);
 	}
-	str = '<iframe class="MuraGCal_iframe" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" src="https://www.google.com/calendar/embed?showCalendars=0&amp;showTz=0' & strCalsColors & '&amp;mode=' & oParams.GCalMode & '&amp;width=' & oParams.GCalWidth & '&amp;height=' & oParams.GCalHeight & '&amp;wkst=' & oParams.GCalWeekStart & '&amp;bgcolor=' & urlencodedformat(oParams.GCalBgColor);
+	str = '<iframe class="MuraGCal2_iframe" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" src="https://www.google.com/calendar/embed?showCalendars=0' & strCalsColors & '&amp;mode=' & oParams.GCalMode & '&amp;width=' & oParams.GCalWidth & '&amp;height=' & oParams.GCalHeight & '&amp;wkst=' & oParams.GCalWeekStart;
+	if ( len(trim(oParams.GCalLang)) ) str = str & '&amp;hl=' & urlencodedformat(oParams.GCalLang);
 	if ( not val(oParams.GCalTitle) ) {
 		str = str & '&amp;showTitle=0';
 	}
@@ -20,8 +21,9 @@ public any function dspMuraGCalObject($){
 		if ( len(trim(oParams.GCalName)) ) str = str & '&amp;title=' & urlencodedformat(trim(oParams.GCalName));
 	}
 	if ( not val(oParams.GCalDate) ) str = str & '&amp;showDate=0';
-	if ( not val(oParams.GCalTabs) ) str = str & '&amp;showTabs=0';
 	if ( not val(oParams.GCalNavButtons) ) str = str & '&amp;showNav=0';
+	if ( not val(oParams.GCalTabs) ) str = str & '&amp;showTabs=0';
+	if ( not val(oParams.GCalTz) ) str = str & '&amp;showTz=0';
 	if ( not val(oParams.GCalPrintIcon) ) str = str & '&amp;showPrint=0';
 	str = str & '" width="' & oParams.GCalWidth & '" height="' & oParams.GCalHeight & '" frameborder="0" scrolling="no" style="margin:0;';
 	if ( val(oParams.GCalBorder) ) {
@@ -31,16 +33,14 @@ public any function dspMuraGCalObject($){
 		str = str & 'border-width:0;';
 	}
 	str = str & 'float:';
-	if ( oParams.GCalPosition eq 'Left' or oParams.GCalPosition eq 'Right' ) {
+	if ( listfindnocase("left,right", oParams.GCalPosition) ) {
 		str = str & lcase(oParams.GCalPosition) & ';';
 	}
 	else {
 		str = str & 'none !important; clear:both;';
 	}
 	str = str & '"></iframe>';
-	// for future use - not used atm
-	//if ( len(trim(oParams.GCalFooter)) ) str = str & '<div class="MuraGCal_footer" style="clear:both;">' & trim(oParams.GCalFooter) & '</div>';
-	if ( oParams.GCalPosition eq 'Center' ) str = '<div class="MuraGCal" style="margin:0 auto;">' & trim(str) & '</div>';
+	if ( oParams.GCalPosition eq 'Center' ) str = '<div style="margin:0 auto;">' & trim(str) & '</div>';
 	
 	return str;
 }
