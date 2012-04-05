@@ -99,7 +99,11 @@ function updateAvailableObject() {
             a[b.attr("name")] = b.val()
 					}
 					else {
-						a[b.attr("name")] += "|"+b.val()
+						//a[b.attr("name")] += "|"+b.val()
+						if (!jQuery.isArray(a[b.attr("name")])) {
+							a[b.attr("name")] = [a[b.attr("name")]]
+						}
+						a[b.attr("name")].push(b.val())
 					}
         }
     });

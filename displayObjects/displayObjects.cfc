@@ -5,8 +5,8 @@ public any function dspMuraGCalObject(required struct $){
 	var str = "";
 	var strCalsColors = "";
 	var i = 1;
-	var arrSources = listtoarray(oParams.GCalID, "|");
-	var arrColors = listtoarray(oParams.GCalColor, "|");
+	var arrSources = oParams.GCalID;//listtoarray(oParams.GCalID, "|");
+	var arrColors = oParams.GCalColor;//listtoarray(oParams.GCalColor, "|");
 	
 	for ( i=1; i lte arraylen(arrSources); i=i+1 ) {
 		if ( arraylen(arrColors) lt i ) arrayappend(arrColors, arrColors[1]);

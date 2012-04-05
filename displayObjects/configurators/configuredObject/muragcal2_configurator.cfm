@@ -11,8 +11,8 @@ else {
 }
 
 defaultParams = {
-	GCalID="",
-	GCalColor="",
+	GCalID=[],
+	GCalColor=[],
 	GCalName="",
 	GCalMode="MONTH",
 	GCalWeekStart=1,
@@ -34,25 +34,27 @@ for ( key in defaultParams ) {
 }
 
 // convert lists of calendar IDs (GCalID param) and calendar events colors (GCalColor param) to arrays for easier manipulation/looping
-arr_gcalid = listtoarray(params.GCalID, "|");
-if ( not arraylen(arr_gcalid) ) arrayappend(arr_gcalid, "");
+if (not isarray(params.GCalID)) params.GCalID = listtoarray(params.GCalID, "|");
+//arr_gcalid = params.GCalID;//listtoarray(params.GCalID, "|");
+if ( not arraylen(params.GCalID) ) arrayappend(params.GCalID, "");
 
-arr_gcalcolor = listtoarray(params.GCalColor, "|");
-if ( not arraylen(arr_gcalcolor) ) arrayappend(arr_gcalcolor, "");
+if (not isarray(params.GCalColor)) params.GCalColor = listtoarray(params.GCalColor, "|");
+//arr_gcalcolor = params.GCalColor;//listtoarray(params.GCalColor, "|");
+if ( not arraylen(params.GCalColor) ) arrayappend(params.GCalColor, "");
 
 </cfscript>
 <cfoutput>
 <div id="availableObjectParams" data-object="plugin" data-name="MuraGCal2 Configurator" data-objectid="#$.event('objectID')#">
 	<h4 class="mgc2-section">Calendars &amp; Colors</h4>
 	<div id="mgc2calendars">
-		<cfloop from="1" to="#arraylen(arr_gcalid)#" index="mgc2gcalid">
+		<cfloop from="1" to="#arraylen(params.GCalID)#" index="mgc2gcalid">
 		<dl class="singleColumn mgc2_calendar">
 			<dt>Calendar #mgc2gcalid#<cfif mgc2gcalid gt 1><span class="removeGCalID" title="Remove this calendar"></span></cfif></dt>
 			<dd>
-				<label>Google Calendar ID: <input name="GCalID" class="objectParam" value="#htmleditformat(arr_gcalid[mgc2gcalid])#" style="width:250px;" /></label>
+				<label>Google Calendar ID: <input name="GCalID" class="objectParam" value="#htmleditformat(params.GCalID[mgc2gcalid])#" style="width:250px;" /></label>
 			</dd>
 			<dd>
-				<label class="colorpicker">Calendar Events Color: <input name="GCalColor" class="objectParam muragcal2-color-picker" value="<cfif arraylen(arr_gcalcolor) gte mgc2gcalid>#htmleditformat(arr_gcalcolor[mgc2gcalid])#</cfif>" /></label>
+				<label class="colorpicker">Calendar Events Color: <input name="GCalColor" class="objectParam muragcal2-color-picker" value="<cfif arraylen(params.GCalColor) gte mgc2gcalid>#htmleditformat(params.GCalColor[mgc2gcalid])#</cfif>" /></label>
 			</dd>
 		</dl>
 		</cfloop>
@@ -140,6 +142,6 @@ if ( not arraylen(arr_gcalcolor) ) arrayappend(arr_gcalcolor, "");
 </div>
 <input type="hidden" name="configuredDTS" class="objectParam" value="#now()#" />
 <input type="hidden" name="configuredBy" class="objectParam" value="#htmleditformat($.currentUser('LName'))#, #htmleditformat($.currentUser('FName'))#" />
-<script>var muraGCal2Counter = #arraylen(arr_gcalid)#;</script><!--- counter of calendar ids added to this instance of MuraGCal2 plugin --->
+<script>var muraGCal2Counter = #arraylen(params.GCalID)#;</script><!--- counter of calendar ids added to this instance of MuraGCal2 plugin --->
 </cfoutput>
 </cfprocessingdirective>
