@@ -5,8 +5,22 @@ public any function dspMuraGCalObject(required struct $){
 	var str = "";
 	var strCalsColors = "";
 	var i = 1;
-	var arrSources = oParams.GCalID;//listtoarray(oParams.GCalID, "|");
-	var arrColors = oParams.GCalColor;//listtoarray(oParams.GCalColor, "|");
+	var arrSources = oParams.GCalID;
+	var arrColors = oParams.GCalColor;
+	
+	// param checkboxes
+	var defaultParams = {
+		GCalTitle=0,
+		GCalDate=0,
+		GCalNavButtons=0,
+		GCalTabs=0,
+		GCalTz=0,
+		GCalPrintIcon=0,
+		GCalBorder=0
+	};
+	for ( i in defaultParams ) {
+		if ( not structkeyexists(oParams, i) ) oParams[i] = defaultParams[i];
+	}
 	
 	for ( i=1; i lte arraylen(arrSources); i=i+1 ) {
 		if ( arraylen(arrColors) lt i ) arrayappend(arrColors, arrColors[1]);

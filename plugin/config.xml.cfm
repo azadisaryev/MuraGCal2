@@ -3,7 +3,7 @@
 	<name>MuraGCal 2 Plugin</name>
 	<package>MuraGCal2</package>
 	<directoryFormat>packageOnly</directoryFormat>
-	<version>2.0.20120406</version>
+	<version>2.0.20120411</version>
 	<provider>Azadi Saryev</provider>
 	<providerURL>https://github.com/azadisaryev/MuraGCal2</providerURL>
 	<category>Application</category>

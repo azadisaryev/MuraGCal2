@@ -14,7 +14,7 @@ if ( not structkeyexists(session, 'siteID') or not $.currentUser().isLoggedIn() 
 <h2>MuraGCal&trade; 2 Plugin</h2>
 <p>MuraGCal2 is a plugin for <a href="http://getmura.com/" target="_blank">Mura CMS</a> which enables you to easily add a *public* Google Calendar to your page, and configure its properties and display options. This plugin allows you to combine/aggregate multiple *public* Google Calendars into one, with separate colors for each calendar's events.</p>
 <p>
-Version: 2.0.20120406<br />
+Version: 2.0.20120411<br />
 Author: <a href="https://plus.google.com/u/0/108538698676550512948/about" target="_blank">Azadi Saryev</a><br />
 Source: <a href="https://github.com/azadisaryev/MuraGCal2" target="_blank">https://github.com/azadisaryev/MuraGCal2</a><br />
 License: <a href="http://www.apache.org/licenses" target="_blank">Apache License Version 2</a></p>

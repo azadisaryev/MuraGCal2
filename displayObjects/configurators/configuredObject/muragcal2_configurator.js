@@ -17,7 +17,7 @@ function initMuraGCalConfigurator(data) {
 				});
 				
 				// bind checkbox click event to change checkbox's value to 1 (checked) or 0 (un-checked) - work-around for a 'bug' in Mura's /admin/js/architecture.js
-				jQuery("input.cboxtoggleval", "#availableObjectParams").click(function(){this.value=(this.checked)?1:0});
+				//jQuery("input.cboxtoggleval", "#availableObjectParams").click(function(){this.value=(this.checked)?1:0});
 				
 				// bind click event to 'Remove this Calendar' icon (span)
 				jQuery("#mgc2calendars").on("click", "span.removeGCalID", function(event){
@@ -89,24 +89,29 @@ function initMuraGCalConfigurator(data) {
 	return true;
 }
 
-/* OVER-RIDE OF updateAvailableObject() FUNCTION IN architecture.js TO ALLOW MULTIPLE PARAMS WITH SAME NAME */
-function updateAvailableObject() {
-    var a = {};
-    jQuery("#availableObjectParams").find(".objectParam").each(function() {
-        var b = jQuery(this);
-        if ( b.attr("type") != "radio" || ( b.attr("type") == "radio" && b.is(":checked") ) ) {
-					if (!a[b.attr("name")]) {
-            a[b.attr("name")] = b.val()
+/* OVER-RIDE OF updateAvailableObject() FUNCTION IN architecture.js TO PROPERLY HANDLE CHECKBOXES */
+function updateAvailableObject(){
+	var availableObjectParams={};
+					
+	jQuery("#availableObjectParams").find(".objectParam").each(
+		function(){
+			var item=jQuery(this);
+			if ( (item.attr("type") != "radio" && item.attr("type") != "checkbox") || ( (item.attr("type")=="radio" || item.attr("type")=="checkbox") && item.is(':checked') ) ) {
+				if(typeof(availableObjectParams[item.attr("name")]) == 'undefined'){
+					availableObjectParams[item.attr("name")] = item.val();
+				} else {
+					if( !jQuery.isArray(availableObjectParams[item.attr("name")]) ){
+						var tempArray=[];
+						tempArray[0]=availableObjectParams[item.attr("name")];
+						availableObjectParams[item.attr("name")]=tempArray;
 					}
-					else {
-						//a[b.attr("name")] += "|"+b.val()
-						if (!jQuery.isArray(a[b.attr("name")])) {
-							a[b.attr("name")] = [a[b.attr("name")]]
-						}
-						a[b.attr("name")].push(b.val())
-					}
-        }
-    });
-    availableObject = jQuery.extend({}, availableObjectTemplate);
-    availableObject.params = a
+
+					availableObjectParams[item.attr("name")].push(item.val());
+
+				}
+			}
+		}
+	)
+	availableObject=jQuery.extend({},availableObjectTemplate);
+	availableObject.params=availableObjectParams;	
 }

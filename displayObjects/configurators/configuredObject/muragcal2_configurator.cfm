@@ -116,26 +116,26 @@ if ( not arraylen(params.GCalColor) ) arrayappend(params.GCalColor, "");
 		<dt title="Select which interface items to show on the calendar">Show:</dt>
 		<dd>
 			<label title="Show Calendar Title?">
-			<input type="checkbox" name="GCalTitle" class="objectParam cboxtoggleval" value="#val(params.GCalTitle)#" <cfif val(params.GCalTitle)>checked="checked"</cfif> />Title
+			<input type="checkbox" name="GCalTitle" class="objectParam cboxtoggleval" value="1" <cfif val(params.GCalTitle)>checked="checked"</cfif> />Title
 			</label> 
 			<label title="Show Date Selector?">
-			<input type="checkbox" name="GCalDate" class="objectParam cboxtoggleval" value="#val(params.GCalDate)#" <cfif val(params.GCalDate)>checked="checked"</cfif> />Date&nbsp;Selector
+			<input type="checkbox" name="GCalDate" class="objectParam cboxtoggleval" value="1" <cfif val(params.GCalDate)>checked="checked"</cfif> />Date&nbsp;Selector
 			</label> 
 			<label title="Show Prev/Next Buttons?">
-			<input type="checkbox" name="GCalNavButtons" class="objectParam cboxtoggleval" value="#val(params.GCalNavButtons)#" <cfif val(params.GCalNavButtons)>checked="checked"</cfif> />Navigation
+			<input type="checkbox" name="GCalNavButtons" class="objectParam cboxtoggleval" value="1" <cfif val(params.GCalNavButtons)>checked="checked"</cfif> />Navigation
 			</label>
 			<br />
 			<label title="Show Display Mode tabs?">
-			<input type="checkbox" name="GCalTabs" class="objectParam cboxtoggleval" value="#val(params.GCalTabs)#" <cfif val(params.GCalTabs)>checked="checked"</cfif> />Tabs
+			<input type="checkbox" name="GCalTabs" class="objectParam cboxtoggleval" value="1" <cfif val(params.GCalTabs)>checked="checked"</cfif> />Tabs
 			</label> 
 			<label title="Show Time Zone?">
-			<input type="checkbox" name="GCalTz" class="objectParam cboxtoggleval" value="#val(params.GCalTz)#" <cfif val(params.GCalTz)>checked="checked"</cfif> />Time Zone
+			<input type="checkbox" name="GCalTz" class="objectParam cboxtoggleval" value="1" <cfif val(params.GCalTz)>checked="checked"</cfif> />Time Zone
 			</label> 
 			<label title="Show Print Icon?">
-			<input type="checkbox" name="GCalPrintIcon" class="objectParam cboxtoggleval" value="#val(params.GCalPrintIcon)#" <cfif val(params.GCalPrintIcon)>checked="checked"</cfif> />Print&nbsp;Icon
+			<input type="checkbox" name="GCalPrintIcon" class="objectParam cboxtoggleval" value="1" <cfif val(params.GCalPrintIcon)>checked="checked"</cfif> />Print&nbsp;Icon
 			</label> 
 			<label title="Show border around calendar container?">
-			<input type="checkbox" name="GCalBorder" class="objectParam cboxtoggleval" value="#val(params.GCalBorder)#" <cfif val(params.GCalBorder)>checked="checked"</cfif> />Border
+			<input type="checkbox" name="GCalBorder" class="objectParam cboxtoggleval" value="1" <cfif val(params.GCalBorder)>checked="checked"</cfif> />Border
 			</label> 
 		</dd>
 	</dl>
