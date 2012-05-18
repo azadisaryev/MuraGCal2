@@ -22,6 +22,9 @@ public any function dspMuraGCalObject(required struct $){
 		if ( not structkeyexists(oParams, i) ) oParams[i] = defaultParams[i];
 	}
 	
+	if ( !isarray(arrSources) ) arrSources = listtoarray(oParams.GCalID, ",| ");
+	if ( !isarray(arrColors) ) arrColors = listtoarray(oParams.GCalColor, ",| ");
+
 	for ( i=1; i lte arraylen(arrSources); i=i+1 ) {
 		if ( arraylen(arrColors) lt i ) arrayappend(arrColors, arrColors[1]);
 		strCalsColors = strCalsColors & '&amp;src=' & urlencodedformat(arrSources[i]) & '&amp;color=' & urlencodedformat(arrColors[i]);
@@ -39,7 +42,7 @@ public any function dspMuraGCalObject(required struct $){
 	if ( not val(oParams.GCalTabs) ) str = str & '&amp;showTabs=0';
 	if ( not val(oParams.GCalTz) ) str = str & '&amp;showTz=0';
 	if ( not val(oParams.GCalPrintIcon) ) str = str & '&amp;showPrint=0';
-	str = str & '" width="' & oParams.GCalWidth & '" height="' & oParams.GCalHeight & '" frameborder="0" scrolling="no" style="margin:0;';
+	str = str & '" width="' & oParams.GCalWidth & '" height="' & oParams.GCalHeight & '" style="margin:0 0 30px;';
 	if ( val(oParams.GCalBorder) ) {
 		str = str & 'border:1px solid ##777;';
 	}

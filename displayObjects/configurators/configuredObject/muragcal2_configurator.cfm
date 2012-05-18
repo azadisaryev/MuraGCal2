@@ -1,6 +1,5 @@
 ﻿<cfprocessingdirective pageencoding="UTF-8" suppresswhitespace="yes">
 <cfscript>
-
 $=application.serviceFactory.getBean("MuraScope").init(session.siteID);
 
 if ( isjson($.event("params")) ) {

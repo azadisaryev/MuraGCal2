@@ -12,22 +12,11 @@ if ( not structkeyexists(session, 'siteID') or not $.currentUser().isLoggedIn() 
 </cfscript>
 <cfsavecontent variable="body">
 <h2>MuraGCal&trade; 2 Plugin</h2>
-<p>MuraGCal2 is a plugin for <a href="http://getmura.com/" target="_blank">Mura CMS</a> which enables you to easily add a *public* Google Calendar to your page, and configure its properties and display options. This plugin allows you to combine/aggregate multiple *public* Google Calendars into one, with separate colors for each calendar's events.</p>
-<p>
-Version: 2.0.20120411<br />
-Author: <a href="https://plus.google.com/u/0/108538698676550512948/about" target="_blank">Azadi Saryev</a><br />
-Source: <a href="https://github.com/azadisaryev/MuraGCal2" target="_blank">https://github.com/azadisaryev/MuraGCal2</a><br />
-License: <a href="http://www.apache.org/licenses" target="_blank">Apache License Version 2</a></p>
-<p>&nbsp;</p>
-<h3>Tested With:</h3>
-<ul>
-	<li>Mura CMS Core Version <strong>5.6.4859</strong></li>
-	<li>Adobe ColdFusion <strong>9.0.1</strong></li>
-	<li>Railo <strong>3.3.1</strong></li>
-</ul>
-<p>&nbsp;</p>
+<p>MuraGCal2 enables you to easily add a *public* Google Calendar to your page, and configure its properties and display options. This plugin allows you to combine/aggregate multiple *public* Google Calendars into one, with separate colors for each calendar's events.</p>
+
 <h3>Installation</h3>
 <p>Deploy as a regular Mura plugin. Do not forget to select at least one site under 'Site Assignment' on installation.</p>
+
 <h3>Usage</h3>
 <h4>In Mura Admin back-end</h4>
 <h5>Adding new MuraGCal2 Calendar to a page:</h5>
@@ -40,8 +29,14 @@ License: <a href="http://www.apache.org/licenses" target="_blank">Apache License
 <h3>Configurator Options</h3>
 <p>See <a href="https://github.com/azadisaryev/MuraGCal2#readme" target="_blank">ReadMe</a></p>
 
-<p>&nbsp;</p>
-<p>Enjoy!</p>
-<p>Azadi Saryev</p>
+<h3>Tested With:</h3>
+<ul>
+	<li>Mura CMS Core Version <strong>5.6.4859</strong></li>
+	<li>Adobe ColdFusion <strong>9.0.1</strong></li>
+	<li>Railo <strong>3.3.1</strong></li>
+</ul>
+
+<h3>Issues / Questions?</h3>
+<p>Visit the project at <a href="https://github.com/azadisaryev/MuraGCal2" target="_blank">https://github.com/azadisaryev/MuraGCal2</a></p>
 </cfsavecontent>
 <cfoutput>#$.getBean('pluginManager').renderAdminTemplate(body=body,pageTitle='')#</cfoutput>
